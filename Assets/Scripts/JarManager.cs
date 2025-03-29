@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 public class JarManager : MonoBehaviour
 {
     [SerializeField]
-    private int numJarsOnScreen;
+    private int numJarsToSpawn;
+
+    [SerializeField]
+    private float spaceBetweenJars;
 
     [Header("References")]
-    [SerializeField]
-    private SpriteRenderer beltSprite;
 
     [SerializeField]
     private Transform startLocation;
@@ -22,16 +23,20 @@ public class JarManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        float beltSize = beltSprite.sprite.bounds.size.x;
-        float spaceBetweenJars = beltSize / numJarsOnScreen;
-
         Vector3 spawnLocation = startLocation.position;
-        for (int i = 0; i < numJarsOnScreen; ++i)
+        for (int i = 0; i < numJarsToSpawn; ++i)
         {
-            createdJars.Add(Instantiate(jarPrefab, spawnLocation, Quaternion.identity));
+            Jar newJar = Instantiate(jarPrefab, spawnLocation, Quaternion.identity);
+            createdJars.Add(newJar);
+            newJar.OnJarDeathEvent += RespawnJar;
 
             spawnLocation = new Vector3(spawnLocation.x - spaceBetweenJars, spawnLocation.y, spawnLocation.z);
         }
+    }
+
+    private void RespawnJar(Jar jar)
+    {
+        
     }
 
     public void OnMove(InputAction.CallbackContext input)

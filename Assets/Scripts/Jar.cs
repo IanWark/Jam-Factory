@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,8 @@ public class Jar : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed;
+
+    public event Action<Jar> OnJarDeathEvent;
 
     private InputAction moveInput;
 
@@ -20,5 +23,13 @@ public class Jar : MonoBehaviour
     public void OnMove(InputAction input)
     {
         moveInput = input;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "KillingField")
+        {
+            OnJarDeathEvent.Invoke(this);
+        }
     }
 }
