@@ -106,9 +106,9 @@ MonoBehaviour:
   SpawnsPerSecond: 8
   SpawnScaleMin: 0.8
   SpawnScaleMax: 1.2
-  HorizontalForceMin: -50
-  HorizontalForceMax: 50
-  VerticalForceMin: -10
+  HorizontalForceMin: -5
+  HorizontalForceMax: 5
+  VerticalForceMin: -1
   VerticalForceMax: 0
   debugActivateKey: 119
 --- !u!1 &5602561781026629246

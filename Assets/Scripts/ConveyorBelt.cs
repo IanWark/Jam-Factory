@@ -6,7 +6,7 @@ public class ConveyorBelt : MonoBehaviour
 {
 
     [SerializeField]
-    private float pushForce;
+    private float pushVelocity;
 
     private HashSet<Rigidbody2D> touchingRigidBodies = new HashSet<Rigidbody2D>();
 
@@ -18,7 +18,7 @@ public class ConveyorBelt : MonoBehaviour
         {
             foreach (Rigidbody2D rigidbody in touchingRigidBodies)
             {
-                rigidbody.linearVelocityX = moveAction.ReadValue<Vector2>().x * pushForce;
+                rigidbody.linearVelocityX = moveAction.ReadValue<Vector2>().x * pushVelocity;
             }
         }
         else
