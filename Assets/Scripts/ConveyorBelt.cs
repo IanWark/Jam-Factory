@@ -32,24 +32,18 @@ public class ConveyorBelt : MonoBehaviour
             currentVelocity = Mathf.Clamp(currentVelocity, -pushMaxVelocity, pushMaxVelocity);
 
             rollEvent?.Invoke(inputAmount);
-
-            Debug.Log($"Go! {currentVelocity}");
         }
         else if (currentVelocity > 0)
         {
             currentVelocity = currentVelocity - Time.deltaTime * pushAcceleration * stoppingAccelerationModifier;
 
             currentVelocity = Mathf.Max(currentVelocity, 0);
-
-            Debug.Log($"Slow! {currentVelocity}");
         }
         else if (currentVelocity < 0)
         {
             currentVelocity = currentVelocity + Time.deltaTime * pushAcceleration * stoppingAccelerationModifier;
 
             currentVelocity = Mathf.Min(currentVelocity, 0);
-
-            Debug.Log($"Slow! {currentVelocity}");
         }
 
         foreach (Rigidbody2D rigidbody in touchingRigidBodies)
