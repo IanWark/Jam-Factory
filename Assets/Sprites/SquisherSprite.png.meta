@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SquisherSprite_0: -8221647040698505144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

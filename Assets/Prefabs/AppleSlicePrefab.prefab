@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4933211681383987007}
   - component: {fileID: 7638477833997030328}
   - component: {fileID: 8269098632743193634}
+  - component: {fileID: -80649963557144722}
   m_Layer: 0
   m_Name: AppleSlicePrefab
   m_TagString: Fruit
@@ -173,3 +174,16 @@ PolygonCollider2D:
       - {x: 0.07037711, y: -0.1774646}
       - {x: 0.0748229, y: 0.17913175}
   m_UseDelaunayMesh: 0
+--- !u!114 &-80649963557144722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673007945077403963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66237313119891498a72139e37b494a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
