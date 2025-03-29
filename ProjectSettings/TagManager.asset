@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - KillingField
+  - Fruit
   layers:
   - Default
   - TransparentFX
