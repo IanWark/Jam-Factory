@@ -27,11 +27,11 @@ public class Pipe : MonoBehaviour
             TimeSinceLastSpawn += Time.deltaTime;
             if(TimeSinceLastSpawn > WhenToUpdate) 
             {
-                GameObject fruit = Instantiate(FruitToSpawn).GetComponent<Fruit>();
-                fruit.Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
-                fruit.transform.localScale = new Vector3(fruit.Scale, fruit.Scale, fruit.Scale);
+                GameObject Fruit = Instantiate(FruitToSpawn);
+                float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
+                transform.localScale = new Vector3(Scale, Scale, Scale);
 
-                fruit.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
+                Fruit.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
             }
         }
     }
