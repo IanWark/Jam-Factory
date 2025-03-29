@@ -106,8 +106,10 @@ MonoBehaviour:
   SpawnsPerSecond: 10
   SpawnScaleMin: 0.8
   SpawnScaleMax: 1.2
-  HorizontalForceMin: -0.75
-  HorizontalForceMax: 0.75
+  spawnPosMin: -0.35
+  spawnPosMax: 0.35
+  HorizontalForceMin: -0.25
+  HorizontalForceMax: 0.25
   VerticalForceMin: -0.25
   VerticalForceMax: 0
   debugActivateKey: 113
@@ -136,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 4819100958130090296}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.4, z: 0}
+  m_LocalPosition: {x: 0, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

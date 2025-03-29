@@ -7,6 +7,10 @@ public class Pipe : MonoBehaviour
     public float SpawnsPerSecond;
     public float SpawnScaleMin;
     public float SpawnScaleMax;
+    [SerializeField]
+    private float spawnPosMin;
+    [SerializeField]
+    private float spawnPosMax;
     public float HorizontalForceMin;
     public float HorizontalForceMax;
     public float VerticalForceMin;
@@ -28,7 +32,10 @@ public class Pipe : MonoBehaviour
             TimeSinceLastSpawn += Time.deltaTime;
             if(TimeSinceLastSpawn > WhenToUpdate) 
             {
-                GameObject Fruit = Instantiate(FruitToSpawn, SpawnPoint.position,SpawnPoint.rotation);
+                float positionModifier = Random.Range(spawnPosMin, spawnPosMax);
+                Vector3 modifiedSpawnPosition = new Vector3(SpawnPoint.position.x + positionModifier, SpawnPoint.position.y, SpawnPoint.position.z);
+
+                GameObject Fruit = Instantiate(FruitToSpawn, modifiedSpawnPosition, SpawnPoint.rotation);
                 
                 float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
                 Fruit.transform.localScale = new Vector3(Scale, Scale, Scale);
