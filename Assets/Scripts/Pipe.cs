@@ -16,7 +16,7 @@ public class Pipe : MonoBehaviour
     private float WhenToUpdate = 0.0f;
     void Start()
     {
-        WhenToUpdate = SpawnsPerSecond / 60.0f; //??
+        WhenToUpdate = 1.0f / SpawnsPerSecond;
     }
 
     // Update is called once per frame
@@ -28,10 +28,12 @@ public class Pipe : MonoBehaviour
             if(TimeSinceLastSpawn > WhenToUpdate) 
             {
                 GameObject Fruit = Instantiate(FruitToSpawn);
+                
                 float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
                 transform.localScale = new Vector3(Scale, Scale, Scale);
-
                 Fruit.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
+
+                TimeSinceLastSpawn = 0.0f;
             }
         }
     }
