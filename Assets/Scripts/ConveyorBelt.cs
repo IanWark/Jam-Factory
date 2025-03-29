@@ -8,7 +8,15 @@ public class ConveyorBelt : MonoBehaviour
     public event Action<float> rollEvent;
 
     [SerializeField]
-    private float pushVelocity;
+    private float pushMaxVelocity;
+
+    [SerializeField]
+    private float pushAcceleration;
+
+    [SerializeField]
+    private float stoppingAccelerationModifier;
+
+    private float currentVelocity = 0f;
 
     private HashSet<Rigidbody2D> touchingRigidBodies = new HashSet<Rigidbody2D>();
 
@@ -19,20 +27,34 @@ public class ConveyorBelt : MonoBehaviour
         if (moveAction != null && moveAction.IsPressed())
         {
             float inputAmount = moveAction.ReadValue<Vector2>().x;
+            currentVelocity = currentVelocity + inputAmount * Time.deltaTime * pushAcceleration;
 
-            foreach (Rigidbody2D rigidbody in touchingRigidBodies)
-            {
-                rigidbody.linearVelocityX = inputAmount * pushVelocity;
-            }
+            currentVelocity = Mathf.Clamp(currentVelocity, -pushMaxVelocity, pushMaxVelocity);
 
             rollEvent?.Invoke(inputAmount);
+
+            Debug.Log($"Go! {currentVelocity}");
         }
-        else
+        else if (currentVelocity > 0)
         {
-            foreach (Rigidbody2D rigidbody in touchingRigidBodies)
-            {
-                rigidbody.linearVelocityX = 0;
-            }
+            currentVelocity = currentVelocity - Time.deltaTime * pushAcceleration * stoppingAccelerationModifier;
+
+            currentVelocity = Mathf.Max(currentVelocity, 0);
+
+            Debug.Log($"Slow! {currentVelocity}");
+        }
+        else if (currentVelocity < 0)
+        {
+            currentVelocity = currentVelocity + Time.deltaTime * pushAcceleration * stoppingAccelerationModifier;
+
+            currentVelocity = Mathf.Min(currentVelocity, 0);
+
+            Debug.Log($"Slow! {currentVelocity}");
+        }
+
+        foreach (Rigidbody2D rigidbody in touchingRigidBodies)
+        {
+            rigidbody.linearVelocityX = currentVelocity;
         }
     }
 
