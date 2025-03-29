@@ -3,6 +3,7 @@ using UnityEngine;
 public class Pipe : MonoBehaviour
 {
     public GameObject FruitToSpawn;
+    public Transform SpawnPoint;
     public float SpawnsPerSecond;
     public float SpawnScaleMin;
     public float SpawnScaleMax;
@@ -27,11 +28,12 @@ public class Pipe : MonoBehaviour
             TimeSinceLastSpawn += Time.deltaTime;
             if(TimeSinceLastSpawn > WhenToUpdate) 
             {
-                GameObject Fruit = Instantiate(FruitToSpawn);
+                GameObject Fruit = Instantiate(FruitToSpawn, SpawnPoint.position,SpawnPoint.rotation);
                 
                 float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
-                transform.localScale = new Vector3(Scale, Scale, Scale);
-                Fruit.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
+                Fruit.transform.localScale = new Vector3(Scale, Scale, Scale);
+                Rigidbody2D rb2d = Fruit.GetComponent<Rigidbody2D>();
+                rb2d.AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
 
                 TimeSinceLastSpawn = 0.0f;
             }
