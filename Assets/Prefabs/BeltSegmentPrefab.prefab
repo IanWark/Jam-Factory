@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -3900166255272197465, guid: 63409efc3c563fc4c890deec6e4df6cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b0845f720303b142a4d12b6458ef979, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 0.09375}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 9171026315578222548, guid: a8529d59c59986d41a62245a4073f527, type: 3}
+  m_Sprite: {fileID: -4311094645713696186, guid: 4d90cd3041eb9fa42a1e03c5cd501b4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06784ada45f9a3e48acce7d8c7a6d5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinFactor: 1.5
+  spinFactor: 0.75
   myWheel: {fileID: 7455296732394094311}
   belt: {fileID: 0}
 --- !u!1 &7455296732394094311
@@ -268,7 +268,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -4253525817913610810, guid: dead3581032915344bc363072d04f13e, type: 3}
+  m_Sprite: {fileID: 1334648592740563279, guid: e7a1ec8a85c7335448c892b7699c0e4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
