@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushMaxVelocity: 5
   pushAcceleration: 5
-  stoppingAccelerationModifier: 0.5
+  stoppingAccelerationModifier: 2
 --- !u!114 &6063580109861961544
 MonoBehaviour:
   m_ObjectHideFlags: 0
