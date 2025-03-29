@@ -120,11 +120,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 115
-        width: 256
-        height: 12
+        y: 53
+        width: 64
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: ConveyorBeltTreadAnimSprite_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 53
-        width: 256
-        height: 12
+        width: 64
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,11 +159,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ConveyorBeltTreadAnimSprite_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 53
+        width: 64
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ab95acb2c884548b03ff285655256d
+      internalID: -328494886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConveyorBeltTreadAnimSprite_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 53
+        width: 64
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fa3b93e7de60d48b97c9ae7af03e83
+      internalID: -1230689815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 074cabc4974a5e24697fa9ffa406f34e
     internalID: 0
     vertices: []
     indices: 
@@ -175,6 +219,8 @@ TextureImporter:
     nameFileIdTable:
       ConveyorBeltTreadAnimSprite_0: -3900166255272197465
       ConveyorBeltTreadAnimSprite_1: 8413213771279801150
+      ConveyorBeltTreadAnimSprite_2: -328494886
+      ConveyorBeltTreadAnimSprite_3: -1230689815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

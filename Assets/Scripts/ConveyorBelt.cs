@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ConveyorBelt : MonoBehaviour
 {
+    public event Action<float> rollEvent;
 
     [SerializeField]
     private float pushVelocity;
@@ -16,10 +18,14 @@ public class ConveyorBelt : MonoBehaviour
     {
         if (moveAction != null && moveAction.IsPressed())
         {
+            float inputAmount = moveAction.ReadValue<Vector2>().x;
+
             foreach (Rigidbody2D rigidbody in touchingRigidBodies)
             {
-                rigidbody.linearVelocityX = moveAction.ReadValue<Vector2>().x * pushVelocity;
+                rigidbody.linearVelocityX = inputAmount * pushVelocity;
             }
+
+            rollEvent?.Invoke(inputAmount);
         }
         else
         {
