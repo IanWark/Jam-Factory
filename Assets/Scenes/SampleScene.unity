@@ -483,11 +483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.62
+      value: 5.498
       objectReference: {fileID: 0}
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7732763
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -520,6 +520,14 @@ PrefabInstance:
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257137097896000100, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8221647040698505144, guid: 43ee385718fb043469fd3fc912adac79, type: 3}
+    - target: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
+      propertyPath: CompressedHeight
+      value: 1.428
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
