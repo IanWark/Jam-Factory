@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8820955787554723568}
   - component: {fileID: 4571589657174991010}
   - component: {fileID: 5630940770192758377}
+  - component: {fileID: 5810076796989741630}
   m_Layer: 0
   m_Name: ApricotPrefab
   m_TagString: Fruit
@@ -152,3 +153,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.01}
   m_Radius: 0.19
+--- !u!114 &5810076796989741630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5099717256522464613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66237313119891498a72139e37b494a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2

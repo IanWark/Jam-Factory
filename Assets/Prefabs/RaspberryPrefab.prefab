@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1821461650008113591}
   - component: {fileID: 6543238323854788368}
   - component: {fileID: 2773369145059632970}
+  - component: {fileID: -2716942934031808691}
   m_Layer: 0
   m_Name: RaspberryPrefab
   m_TagString: Fruit
@@ -153,3 +154,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.18, y: 0.22}
   m_Direction: 0
+--- !u!114 &-2716942934031808691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422966670553543357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66237313119891498a72139e37b494a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
