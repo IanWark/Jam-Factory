@@ -445,7 +445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.257946
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 6541008960575827712, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -774,14 +774,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BluePipe
       objectReference: {fileID: 0}
-    - target: {fileID: 2758535693200656535, guid: beafd2854ef192346b591660e6af7c41, type: 3}
-      propertyPath: HorizontalForceMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758535693200656535, guid: beafd2854ef192346b591660e6af7c41, type: 3}
-      propertyPath: HorizontalForceMin
-      value: -50
-      objectReference: {fileID: 0}
     - target: {fileID: 7040960756747505766, guid: beafd2854ef192346b591660e6af7c41, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5
@@ -902,7 +894,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2201531866265397276, guid: 8ae9642b071141e45b581f82fb4e708b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.55
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2201531866265397276, guid: 8ae9642b071141e45b581f82fb4e708b, type: 3}
       propertyPath: m_LocalPosition.y
