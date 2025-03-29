@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6116473481371500481}
   - component: {fileID: 7200489629470496657}
   - component: {fileID: 5295821786393671554}
+  - component: {fileID: 5797680544656793949}
   m_Layer: 0
   m_Name: Killing Field
   m_TagString: KillingField
@@ -134,3 +135,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5797680544656793949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57858893925957361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaeecaa8489afea4c87514a91c2d9f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

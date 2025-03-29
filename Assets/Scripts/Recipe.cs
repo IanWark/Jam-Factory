@@ -9,19 +9,29 @@ public class Recipe : MonoBehaviour
     public TextMeshProUGUI percent3;
     public TextMeshProUGUI percent4;
 
+    public void Respawn()
+    {
+        Generate();
+    }
+
     private void Start()
+    {
+        Generate();
+    }
+
+    private void Generate()
     {
         int numFruits = 4;
         percentArray = new float[numFruits];
 
-        float totalPercent = 100.0f; 
-        for(int i = 0; i < numFruits-1; i++)
+        float totalPercent = 100.0f;
+        for (int i = 0; i < numFruits - 1; i++)
         {
             percentArray[i] = Random.Range(0.0f, totalPercent);
             totalPercent -= percentArray[i];
         }
 
-        percentArray[numFruits-1] = totalPercent;
+        percentArray[numFruits - 1] = totalPercent;
 
         percent1.text = Mathf.RoundToInt(percentArray[0]).ToString() + "%";
         percent2.text = Mathf.RoundToInt(percentArray[1]).ToString() + "%";

@@ -6,9 +6,9 @@ public class Jar : MonoBehaviour
 {
     public event Action<Jar> OnJarDeathEvent;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.tag == "KillingField")
+        if (collider.tag == "KillingField")
         {
             OnJarDeathEvent.Invoke(this);
         }

@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class KillPlane : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(collision.gameObject);
+        if (collider.tag == "Fruit")
+        {
+            Destroy(collider);
+        }
     }
 }
