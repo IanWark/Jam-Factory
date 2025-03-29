@@ -433,6 +433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numJarsToSpawn: 8
-  spaceBetweenJars: 5
+  spaceBetweenJars: 2
   startLocation: {fileID: 2167741355630051271}
   jarPrefab: {fileID: 680252073710216124, guid: 313309532e70ce449a7b35d68e1776aa, type: 3}
