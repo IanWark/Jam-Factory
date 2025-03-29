@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FruitToSpawn: {fileID: 6472019887614488365, guid: c03314e3e3397be42ad60adb6e6ec4a1, type: 3}
   SpawnPoint: {fileID: 9133797129336915010}
-  SpawnsPerSecond: 10
+  SpawnsPerSecond: 25
   SpawnScaleMin: 0.8
   SpawnScaleMax: 1.2
   spawnPosMin: -0.35
