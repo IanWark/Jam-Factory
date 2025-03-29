@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushMaxVelocity: 5
-  pushAcceleration: 5
+  pushAcceleration: 10
   stoppingAccelerationModifier: 2
 --- !u!114 &6063580109861961544
 MonoBehaviour:
