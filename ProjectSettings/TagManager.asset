@@ -6,6 +6,7 @@ TagManager:
   tags:
   - KillingField
   - Fruit
+  - Jar
   layers:
   - Default
   - TransparentFX

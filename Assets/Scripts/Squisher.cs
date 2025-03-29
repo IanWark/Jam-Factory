@@ -8,7 +8,9 @@ public class Squisher : MonoBehaviour
     public float DownSpeed;
     public float UpSpeed;
 
+    public float jarWidth = 1.0f;
     private bool isSquishing = false;
+    private GameObject jar;
 
     private void Start()
     {
@@ -40,14 +42,28 @@ public class Squisher : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, NormalHeight, transform.position.z);
             }
         }
+
+        if(!isSquishing)
+        {
+            jar = null;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isSquishing)
         {
+            if(jar == null && collision.gameObject.tag == "Jar")
+            {
+                jar = collision.gameObject;
+            }
             if (collision.gameObject.tag == "Fruit")
             {
+                if(jar != null &&
+                    Mathf.Abs(jar.transform.position.x - collision.gameObject.transform.position.x) < (jarWidth / 2.0f))
+                {
+                    Debug.Log(collision.gameObject.name);
+                }
                 Destroy(collision.gameObject);
             }
         }
