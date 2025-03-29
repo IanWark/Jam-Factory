@@ -35,7 +35,7 @@ public class ConveyorBelt : MonoBehaviour
         moveAction = input.action;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D collidingRigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
         if (collidingRigidBody != null)
@@ -43,8 +43,7 @@ public class ConveyorBelt : MonoBehaviour
             touchingRigidBodies.Add(collidingRigidBody);
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Rigidbody2D collidingRigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
         if (collidingRigidBody != null)
