@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6116473481371500481}
   - component: {fileID: 7200489629470496657}
-  - component: {fileID: 5295821786393671554}
   - component: {fileID: 5797680544656793949}
+  - component: {fileID: 5295821786393671554}
   m_Layer: 0
   m_Name: Killing Field
   m_TagString: KillingField
@@ -89,6 +89,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5797680544656793949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57858893925957361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaeecaa8489afea4c87514a91c2d9f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5295821786393671554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +131,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -135,15 +147,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5797680544656793949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57858893925957361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaeecaa8489afea4c87514a91c2d9f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
