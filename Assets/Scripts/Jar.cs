@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Jar : MonoBehaviour
 {
     public event Action<Jar> OnJarDeathEvent;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collider.tag == "KillingField")
+        if (collision.gameObject.tag == "KillingField")
         {
             OnJarDeathEvent.Invoke(this);
         }
