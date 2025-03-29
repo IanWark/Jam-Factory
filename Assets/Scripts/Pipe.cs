@@ -39,6 +39,7 @@ public class Pipe : MonoBehaviour
                 
                 float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
                 Fruit.transform.localScale = new Vector3(Scale, Scale, Scale);
+                Fruit.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
                 Rigidbody2D rb2d = Fruit.GetComponent<Rigidbody2D>();
                 rb2d.AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
 
