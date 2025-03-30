@@ -133,14 +133,7 @@ public class Squisher : MonoBehaviour
                 }
                 else
                 {
-                    Vector3[] colours = new Vector3[4];
-                    colours[0] = new Vector3(0.0f, 0.0f, 1.0f);
-                    colours[1] = new Vector3(0.0f, 1.0f, 0.0f);
-                    colours[2] = new Vector3(1.0f, 1.0f, 0.0f);
-                    colours[3] = new Vector3(1.0f, 0.0f, 0.0f);
-                    ParticleSystem.MainModule main = Instantiate(squishParticleSystem, collision.gameObject.transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
-                    int id = collision.gameObject.GetComponent<Fruit>().id;
-                    main.startColor = new Color(colours[id].x, colours[id].y, colours[id].z);
+                    collision.gameObject.GetComponent<Fruit>().DestroyIt();
                 }
 
                 Destroy(collision.gameObject);

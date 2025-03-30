@@ -79,6 +79,8 @@ public class ConveyorBelt : MonoBehaviour
             currentVelocity = Mathf.Min(currentVelocity, 0);
         }
 
+        touchingRigidBodies.Remove(null);
+
         foreach (Rigidbody2D rigidbody in touchingRigidBodies)
         {
             Recipe recipe = rigidbody.GetComponent<Recipe>();
