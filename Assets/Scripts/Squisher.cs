@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class Squisher : MonoBehaviour
 {
-    public KeyCode DebugKeyCode;
     private float NormalHeight;
     public float CompressedHeight;
     public float DownSpeed;
@@ -32,6 +32,13 @@ public class Squisher : MonoBehaviour
     private float totalMass;
     private float[] fruitCount = new float[4];
 
+    private InputAction activateAction;
+
+    public void OnActivate(InputAction.CallbackContext input)
+    {
+        activateAction = input.action;
+    }
+
     private void Start()
     {
         NormalHeight = transform.position.y;
@@ -41,7 +48,7 @@ public class Squisher : MonoBehaviour
     private void Update()
     {
         isSquishing = false;
-        if(Input.GetKey(DebugKeyCode))
+        if (activateAction != null && activateAction.IsPressed())
         {
             if (canPlayStartSound)
             {

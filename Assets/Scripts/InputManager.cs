@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Pipe redPipe;
 
+    [SerializeField]
+    private Squisher squisher;
+
     private void Start()
     {
         timer.OnGameOverEvent += OnGameOver;
@@ -57,5 +60,10 @@ public class InputManager : MonoBehaviour
     public void OnRedActivate(InputAction.CallbackContext input)
     {
         redPipe.OnActivate(input);
+    }
+
+    public void OnSquisherActivate(InputAction.CallbackContext input)
+    {
+        squisher.OnActivate(input);
     }
 }
