@@ -7,9 +7,30 @@ public class MoneyUI : MonoBehaviour
     public TextMeshProUGUI Moeny;
     public static float score;
 
+    [SerializeField]
+    private TextMeshProUGUI finalScoreText;
+
+    [SerializeField]
+    private Timer timer;
+
+    private void Start()
+    {
+        timer.OnGameOverEvent += OnGameOver;
+    }
+
     private void Update()
     {
-        Moeny.text = "$" + score;
+        Moeny.text = GetFormattedScore();
+    }
+
+    private void OnGameOver()
+    {
+        finalScoreText.text = GetFormattedScore();
+    }
+
+    private string GetFormattedScore()
+    {
+        return "$" + score;
     }
 
     public static void IncreaseScore(float jamJarValue)
