@@ -27,6 +27,10 @@ public class Pipe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(debugActivateKey)) 
+        {
+            TimeSinceLastSpawn = WhenToUpdate;
+        }
         if(Input.GetKey(debugActivateKey)) 
         {
             TimeSinceLastSpawn += Time.deltaTime;
