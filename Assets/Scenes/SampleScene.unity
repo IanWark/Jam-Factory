@@ -884,6 +884,17 @@ MonoBehaviour:
   conveyorBelt: {fileID: 32003622}
   startLocation: {fileID: 1570023703}
   beltSegmentPrefab: {fileID: 6497450317254102556, guid: a7fbfa0bb7e95744983ea94526643ee4, type: 3}
+--- !u!114 &1343781342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
+  m_PrefabInstance: {fileID: 1506888566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2fbd1de30d77e4b98c9b2fa79911ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1506888566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -950,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9690d09054593d84a9d5cd875fc79531, type: 3}
     - target: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: CompressedHeight
-      value: 4.9
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: squishClips.Array.size
@@ -1125,6 +1136,7 @@ MonoBehaviour:
   greenPipe: {fileID: 1030892603}
   yellowPipe: {fileID: 325601620}
   redPipe: {fileID: 674408988}
+  squisher: {fileID: 1343781342}
 --- !u!114 &1800097558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1282,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1814df13-f6ac-4083-ac2e-360059e67356
     m_ActionName: 'Player/ActivateRed[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1800097557}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnSquisherActivate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 504d6170-a9c4-4ebb-b0a9-c7639248b1bb
+    m_ActionName: 'Player/ActivateSquisher[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3277,6 +3305,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1800097559}
+  - {fileID: 110543105}
   - {fileID: 2143120901}
   - {fileID: 8710297474324373660}
   - {fileID: 7272447693755966982}
@@ -3285,6 +3315,4 @@ SceneRoots:
   - {fileID: 8475596157789021446}
   - {fileID: 1506888566}
   - {fileID: 4138204130771580610}
-  - {fileID: 1800097559}
   - {fileID: 1987162915}
-  - {fileID: 110543105}
