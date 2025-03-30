@@ -102,7 +102,7 @@ public class Recipe : MonoBehaviour
         image.enabled = true;
         image.color = new Color(finalColour.x, finalColour.y, finalColour.z, 0.75f);
         image.transform.localScale = new Vector3(1.0f, fullness, 1.0f);
-        image.transform.position -= new Vector3(0.0f,(1.0f-fullness)*0.5f, 0.0f);
+        image.transform.position -= new Vector3(0.0f,(1.0f-fullness), 0.0f);
 
         actualPercent1.enabled = true;
         actualPercent2.enabled = true;

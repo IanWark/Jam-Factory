@@ -67,19 +67,20 @@ public class Squisher : MonoBehaviour
                     hasScorredJar = true;
                     Recipe recipe = jar.GetComponent<Recipe>();
 
-                    float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
-                    if (totalCount > 0)
+                    float totalMass = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
+                    if (totalMass > 0)
                     {
                         float fullness = Mathf.Min(1.0f, totalMass / expectedMass);
-                        float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalCount);
-                        float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalCount);
-                        float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalCount);
-                        float Ar = Mathf.Min(recipe.percentArray[3] / 100.0f, fruitCount[3] / totalCount);
+                        float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalMass);
+                        float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalMass);
+                        float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalMass);
+                        float Ar = Mathf.Min(recipe.percentArray[3] / 100.0f, fruitCount[3] / totalMass);
                         float accuracy = Ab + As + Aa + Ar;
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
                         audioSource.PlayOneShot(squishClips[Random.Range(0, squishClips.Length)]);
+                        Debug.Log(totalMass);
                     }
                 }
             }
