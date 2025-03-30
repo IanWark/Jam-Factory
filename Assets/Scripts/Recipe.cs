@@ -20,6 +20,18 @@ public class Recipe : MonoBehaviour
     public TextMeshProUGUI actualPercent4;
     public Image image;
 
+    [SerializeField]
+    private float jamAlpha;
+
+    [SerializeField]
+    private FruitColourObject blueberryColour;
+    [SerializeField]
+    private FruitColourObject appleColour;
+    [SerializeField]
+    private FruitColourObject apricotColour;
+    [SerializeField]
+    private FruitColourObject raspberryColour;
+
     public void Respawn()
     {
         Generate();
@@ -92,15 +104,15 @@ public class Recipe : MonoBehaviour
         if (totalCount <= 0f)
             return;
 
-        Vector3 blue = new Vector3(0.0f, 0.0f, 1.0f);
-        Vector3 red = new Vector3(1.0f, 0.0f, 0.0f);
-        Vector3 green = new Vector3(0.0f, 1.0f, 0.0f);
-        Vector3 yellow = new Vector3(1.0f, 1.0f, 0.0f);
+        Color blue = blueberryColour.colour;
+        Color red = raspberryColour.colour;
+        Color green = appleColour.colour;
+        Color yellow = apricotColour.colour;
 
-        Vector3 finalColour = ((blue * fruitCount[0]) + (green * fruitCount[1]) + (yellow * fruitCount[2]) + (red * fruitCount[3]))/totalCount;
+        Color finalColour = ((blue * fruitCount[0]) + (green * fruitCount[1]) + (yellow * fruitCount[2]) + (red * fruitCount[3]))/totalCount;
 
         image.enabled = true;
-        image.color = new Color(finalColour.x, finalColour.y, finalColour.z, 0.75f);
+        image.color = new Color(finalColour.r, finalColour.g, finalColour.b, jamAlpha);
         image.transform.localScale = new Vector3(1.0f, fullness, 1.0f);
 
         actualPercent1.enabled = true;

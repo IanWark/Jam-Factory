@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8269098632743193634}
   - component: {fileID: 8308786427631061684}
   - component: {fileID: -80649963557144722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AppleSlicePrefab
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -225,5 +225,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   timeUntilOld: 1
-  particleColour: {r: 0.9372549, g: 0.9647059, b: 0.83137256, a: 1}
+  particleColour: {fileID: 11400000, guid: bbace25476e5131458f279fb2e8c793d, type: 2}
   particleSystemPrefab: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}
