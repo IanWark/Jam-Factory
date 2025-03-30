@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class Recipe : MonoBehaviour
 {
+    [HideInInspector]
     public float[] percentArray;
+    public float MultipleUsedToDetermineRecipe = 25.0f;
     public TextMeshProUGUI percent1;
     public TextMeshProUGUI percent2;
     public TextMeshProUGUI percent3;
@@ -34,7 +36,7 @@ public class Recipe : MonoBehaviour
         float totalPercent = 100.0f;
         for (int i = 0; i < numFruits - 1; i++)
         {
-            percentArray[i] = Random.Range(0.0f, totalPercent);
+            percentArray[i] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineRecipe))*MultipleUsedToDetermineRecipe;
             totalPercent -= percentArray[i];
         }
 
@@ -50,6 +52,8 @@ public class Recipe : MonoBehaviour
     {
         if (score <= 0.0)
             return;
+
+        MoneyUI.IncreaseScore(score);
 
         float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
         Vector3 blue = new Vector3(0.0f, 0.0f, 1.0f);

@@ -9,6 +9,7 @@ public class Squisher : MonoBehaviour
     public float UpSpeed;
 
     public float jarWidth = 1.0f;
+    public float expectedMass = 0.5f;
     private bool isSquishing = false;
     private GameObject jar;
 
@@ -42,7 +43,7 @@ public class Squisher : MonoBehaviour
                     if (totalCount > 0)
                     {
 
-                        float fullness = Mathf.Min(1.0f, totalMass / 0.5f);
+                        float fullness = Mathf.Min(1.0f, totalMass / expectedMass);
                         float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalCount);
                         float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalCount);
                         float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalCount);
