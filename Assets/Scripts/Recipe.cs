@@ -8,7 +8,7 @@ public class Recipe : MonoBehaviour
     [HideInInspector]
     public float[] percentArray;
     public float MultipleUsedToDetermineRecipe = 25.0f;
-    private bool hasAlreadyPostedScore = false;
+    public bool hasAlreadyPostedScore = false;
     public TextMeshProUGUI percent1;
     public TextMeshProUGUI percent2;
     public TextMeshProUGUI percent3;

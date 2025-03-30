@@ -19,7 +19,7 @@ public class JarOMatic : MonoBehaviour
     {
         if (squisher)
         {
-            squisher.resetAction += OnSquisherReset();
+            squisher.resetAction += OnSquisherReset;
         }
     }
 
@@ -27,7 +27,19 @@ public class JarOMatic : MonoBehaviour
     {
         if (jar == null && collision.gameObject.tag == "Jar")
         {
-            jar = collision.gameObject;
+            Recipe recipe = collision.gameObject.GetComponent<Recipe>();
+            if (recipe && !recipe.hasAlreadyPostedScore)
+            {
+                jar = collision.gameObject;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == jar)
+        {
+            jar = null;
         }
     }
 
@@ -64,17 +76,16 @@ public class JarOMatic : MonoBehaviour
 
     private void OnSquisherReset()
     {
-        if (locked)
+        if (locked && jar)
         {
-            locked = false;
             Rigidbody2D body = jar.GetComponent<Rigidbody2D>();
-            body.constraints &= !RigidbodyConstraints2D.FreezePositionX;
-            body.constraints &= !RigidbodyConstraints2D.FreezePositionY;
-        }
+            body.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+            body.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+            body.linearVelocityX = 7.0f;
+            body.linearVelocityY = 6.0f;
 
-        if (jar)
-        {
-
+            locked = false;
+            jar = null;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 public class Squisher : MonoBehaviour
 {
     public event Action resetAction;
+
+    private bool needsReset = false;
 
     private float NormalHeight;
     public float CompressedHeight;
@@ -15,7 +18,8 @@ public class Squisher : MonoBehaviour
     public float jarWidth = 1.0f;
     public float expectedMass = 0.5f;
     private GameObject jar;
-    public GameObject particleSystem;
+
+    public GameObject squishParticleSystem;
 
     private AudioSource audioSource;
 
@@ -62,6 +66,7 @@ public class Squisher : MonoBehaviour
             {
                 audioSource.PlayOneShot(impactClip);
                 isSquishing = false;
+                needsReset = true;
 
                 transform.position = new Vector3(transform.position.x, CompressedHeight, transform.position.z);
                 if(!hasScorredJar && jar != null)
@@ -81,7 +86,7 @@ public class Squisher : MonoBehaviour
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
-                        audioSource.PlayOneShot(squishClips[Random.Range(0, squishClips.Length)]);
+                        audioSource.PlayOneShot(squishClips[UnityEngine.Random.Range(0, squishClips.Length)]);
                         Debug.Log(totalMass);
                     }
                 }
@@ -94,14 +99,18 @@ public class Squisher : MonoBehaviour
             {
                 transform.position += new Vector3(0f, UpSpeed * Time.deltaTime, 0f);
             }
-            else
+            else if (needsReset)
             {
                 transform.position = new Vector3(transform.position.x, NormalHeight, transform.position.z);
+
+                resetAction.Invoke();
+                jar = null;
+                fruitCount = new float[4];
+                totalMass = 0f;
+
+                needsReset = false;
             }
 
-            jar = null;
-            fruitCount = new float[4];
-            totalMass = 0f;
         }
     }
 
@@ -129,7 +138,7 @@ public class Squisher : MonoBehaviour
                     colours[1] = new Vector3(0.0f, 1.0f, 0.0f);
                     colours[2] = new Vector3(1.0f, 1.0f, 0.0f);
                     colours[3] = new Vector3(1.0f, 0.0f, 0.0f);
-                    ParticleSystem.MainModule main = Instantiate(particleSystem, collision.gameObject.transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
+                    ParticleSystem.MainModule main = Instantiate(squishParticleSystem, collision.gameObject.transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
                     int id = collision.gameObject.GetComponent<Fruit>().id;
                     main.startColor = new Color(colours[id].x, colours[id].y, colours[id].z);
                 }
