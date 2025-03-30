@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 236038152982400655}
   - component: {fileID: 1336395009594065914}
   - component: {fileID: 734602664182459318}
+  - component: {fileID: 2777413499272306934}
   m_Layer: 0
   m_Name: GreenPipe
   m_TagString: Untagged
@@ -113,6 +114,7 @@ MonoBehaviour:
   HorizontalForceMax: 1
   VerticalForceMin: -1
   VerticalForceMax: 0
+  collider: {fileID: 2777413499272306934}
   fruitSpawnSound: {fileID: 0}
 --- !u!82 &734602664182459318
 AudioSource:
@@ -211,6 +213,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &2777413499272306934
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347514231504621869}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6015625, y: 3.546875}
+    newSize: {x: 1.6015625, y: 3.546875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.6015625, y: 3.546875}
+  m_EdgeRadius: 0
 --- !u!1 &5602561781026629246
 GameObject:
   m_ObjectHideFlags: 0

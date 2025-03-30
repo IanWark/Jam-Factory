@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.83, y: 6.52, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,12 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2fbd1de30d77e4b98c9b2fa79911ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugKeyCode: 32
   CompressedHeight: 1.5
   DownSpeed: 20
   UpSpeed: 2
   jarWidth: 2
-  expectedMass: 2
+  expectedMass: 2.5
+  particleSystem: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}
   startClip: {fileID: 0}
   impactClip: {fileID: 0}
   squishClips: []

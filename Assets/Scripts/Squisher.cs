@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class Squisher : MonoBehaviour
 {
     public event Action resetAction;
 
-    public KeyCode DebugKeyCode;
     private float NormalHeight;
     public float CompressedHeight;
     public float DownSpeed;
@@ -15,6 +15,7 @@ public class Squisher : MonoBehaviour
     public float jarWidth = 1.0f;
     public float expectedMass = 0.5f;
     private GameObject jar;
+    public GameObject particleSystem;
 
     private AudioSource audioSource;
 
@@ -30,6 +31,13 @@ public class Squisher : MonoBehaviour
     private float totalMass;
     private float[] fruitCount = new float[4];
 
+    private InputAction activateAction;
+
+    public void OnActivate(InputAction.CallbackContext input)
+    {
+        activateAction = input.action;
+    }
+
     private void Start()
     {
         NormalHeight = transform.position.y;
@@ -44,8 +52,6 @@ public class Squisher : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKey(DebugKeyCode))
-
         if (isSquishing)
         {
             if(transform.position.y > CompressedHeight)
@@ -63,19 +69,20 @@ public class Squisher : MonoBehaviour
                     hasScorredJar = true;
                     Recipe recipe = jar.GetComponent<Recipe>();
 
-                    float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
-                    if (totalCount > 0)
+                    float totalMass = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
+                    if (totalMass > 0)
                     {
                         float fullness = Mathf.Min(1.0f, totalMass / expectedMass);
-                        float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalCount);
-                        float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalCount);
-                        float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalCount);
-                        float Ar = Mathf.Min(recipe.percentArray[3] / 100.0f, fruitCount[3] / totalCount);
+                        float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalMass);
+                        float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalMass);
+                        float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalMass);
+                        float Ar = Mathf.Min(recipe.percentArray[3] / 100.0f, fruitCount[3] / totalMass);
                         float accuracy = Ab + As + Aa + Ar;
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
                         audioSource.PlayOneShot(squishClips[Random.Range(0, squishClips.Length)]);
+                        Debug.Log(totalMass);
                     }
                 }
             }
@@ -108,13 +115,25 @@ public class Squisher : MonoBehaviour
             }
             if (collision.gameObject.tag == "Fruit")
             {
-                if(jar != null &&
+                if (jar != null &&
                     Mathf.Abs(jar.transform.position.x - collision.gameObject.transform.position.x) < (jarWidth / 2.0f))
                 {
                     float mass = collision.gameObject.GetComponent<Rigidbody2D>().mass;
-                    totalMass += collision.gameObject.GetComponent<Rigidbody2D>().mass;
+                    totalMass += mass;
                     fruitCount[collision.gameObject.GetComponent<Fruit>().id] += mass;
                 }
+                else
+                {
+                    Vector3[] colours = new Vector3[4];
+                    colours[0] = new Vector3(0.0f, 0.0f, 1.0f);
+                    colours[1] = new Vector3(0.0f, 1.0f, 0.0f);
+                    colours[2] = new Vector3(1.0f, 1.0f, 0.0f);
+                    colours[3] = new Vector3(1.0f, 0.0f, 0.0f);
+                    ParticleSystem.MainModule main = Instantiate(particleSystem, collision.gameObject.transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
+                    int id = collision.gameObject.GetComponent<Fruit>().id;
+                    main.startColor = new Color(colours[id].x, colours[id].y, colours[id].z);
+                }
+
                 Destroy(collision.gameObject);
             }
         }
