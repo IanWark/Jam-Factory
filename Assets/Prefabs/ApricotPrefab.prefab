@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5630940770192758377}
   - component: {fileID: 7013677999157259305}
   - component: {fileID: 5810076796989741630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ApricotPrefab
   m_TagString: Fruit
   m_Icon: {fileID: 0}

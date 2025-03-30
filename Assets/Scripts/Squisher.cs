@@ -28,9 +28,6 @@ public class Squisher : MonoBehaviour
     [SerializeField]
     private AudioClip impactClip;
 
-    private bool canPlayStartSound = true;
-    private bool canPlayImpactSound = true;
-
     bool hasScorredJar = false;
     private float totalMass;
     private float[] fruitCount = new float[4];

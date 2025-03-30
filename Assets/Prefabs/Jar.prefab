@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3549435763666070114}
   - component: {fileID: 7731909585217043642}
   - component: {fileID: 5091024158292238579}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1436353132556082061}
   - component: {fileID: 9129321640538960990}
   - component: {fileID: 6055762248880390289}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Jam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6816017590884088554}
   - component: {fileID: 8348894300376753707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RaspberrySprite1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 6209698453968475511}
   - component: {fileID: 4910316889380675268}
   - component: {fileID: 6524922184991143651}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4813341132803902919}
   - component: {fileID: 993761845651693832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueberrySprite1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 5019514996410337757}
   - component: {fileID: 5548022559660054500}
   - component: {fileID: 1223889884860486846}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 6364618971146757032}
   - component: {fileID: 716203850679852389}
   - component: {fileID: 5748129675780749391}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 2585693061868998860}
   - component: {fileID: 5257790664395972502}
   - component: {fileID: 2607263414087060155}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8287675665071434197}
   - component: {fileID: 1118640727624005695}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ApricotSprite1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 6062433631616129685}
   - component: {fileID: 809682428363661925}
   - component: {fileID: 4008576926179770346}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 4291362184923800740}
   - component: {fileID: 803555779428537489}
   - component: {fileID: 183567693637858665}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 74811438828256389}
   - component: {fileID: 5653997503742693601}
   - component: {fileID: 5513827727521139291}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 5414998155223242652}
   - component: {fileID: 9118738965314828640}
   - component: {fileID: 9176707502573684826}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Percent1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1515,7 @@ GameObject:
   - component: {fileID: 7133079181912875015}
   - component: {fileID: 571145551274933728}
   - component: {fileID: 6806564120575275856}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,8 +1627,9 @@ GameObject:
   - component: {fileID: 680252073710216124}
   - component: {fileID: 8890951973371564111}
   - component: {fileID: 8544312201166246503}
+  - component: {fileID: 6412618722953813034}
   - component: {fileID: 6185646885439471575}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jar
   m_TagString: Jar
   m_Icon: {fileID: 0}
@@ -1758,10 +1759,10 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1800,6 +1801,52 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!61 &6412618722953813034
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344836075517783055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &6185646885439471575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,7 +1886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 850996867917174667}
   - component: {fileID: 4562616896183732469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StrawberrySprite1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

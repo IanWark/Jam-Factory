@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2773369145059632970}
   - component: {fileID: 1670819162513057991}
   - component: {fileID: -2716942934031808691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RaspberryPrefab
   m_TagString: Fruit
   m_Icon: {fileID: 0}

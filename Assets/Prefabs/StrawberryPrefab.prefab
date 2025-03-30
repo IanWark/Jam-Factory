@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6222267178931204147}
   - component: {fileID: 5162903609014684694}
   - component: {fileID: 1009355554901810060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StrawberryPrefab
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -205,4 +205,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   timeUntilOld: 1
+  particleColour: {fileID: 0}
   particleSystemPrefab: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}

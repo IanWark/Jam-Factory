@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8269098632743193634}
   - component: {fileID: 8308786427631061684}
   - component: {fileID: -80649963557144722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AppleSlicePrefab
   m_TagString: Fruit
   m_Icon: {fileID: 0}

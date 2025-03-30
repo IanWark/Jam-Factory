@@ -36,7 +36,8 @@ public class Fruit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Fruit" && IsOld())
+        if ((collision.gameObject.tag == "Fruit" || collision.gameObject.tag == "Jar")
+            && IsOld())
         {
             DestroyIt();
         }
