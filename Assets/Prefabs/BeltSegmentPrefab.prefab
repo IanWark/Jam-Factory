@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06784ada45f9a3e48acce7d8c7a6d5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinFactor: 0.75
+  spinFactor: 2
   myWheel: {fileID: 7455296732394094311}
   belt: {fileID: 0}
 --- !u!1 &7455296732394094311

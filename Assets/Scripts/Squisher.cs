@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Squisher : MonoBehaviour
 {
     public KeyCode DebugKeyCode;
@@ -9,8 +10,23 @@ public class Squisher : MonoBehaviour
     public float UpSpeed;
 
     public float jarWidth = 1.0f;
+    public float expectedMass = 0.5f;
     private bool isSquishing = false;
     private GameObject jar;
+
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip startClip;
+    [SerializeField]
+    private AudioClip impactClip;
+
+    [SerializeField]
+    private AudioClip[] squishClips;
+
+
+    private bool canPlayStartSound = true;
+    private bool canPlayImpactSound = true;
 
     bool hasScorredJar = false;
     private float totalMass;
@@ -19,6 +35,7 @@ public class Squisher : MonoBehaviour
     private void Start()
     {
         NormalHeight = transform.position.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -26,12 +43,24 @@ public class Squisher : MonoBehaviour
         isSquishing = false;
         if(Input.GetKey(DebugKeyCode))
         {
+            if (canPlayStartSound)
+            {
+                audioSource.PlayOneShot(startClip);
+                canPlayStartSound = false;
+            }
+
             if(transform.position.y > CompressedHeight)
             {
                 transform.position -= new Vector3(0f, DownSpeed * Time.deltaTime, 0f);
                 isSquishing = true;
             } else
             {
+                if(canPlayImpactSound)
+                {
+                    audioSource.PlayOneShot(impactClip);
+                    canPlayImpactSound = false;
+                }
+
                 transform.position = new Vector3(transform.position.x, CompressedHeight, transform.position.z);
                 if(!hasScorredJar && jar != null)
                 {
@@ -41,8 +70,7 @@ public class Squisher : MonoBehaviour
                     float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
                     if (totalCount > 0)
                     {
-
-                        float fullness = Mathf.Min(1.0f, totalMass / 0.5f);
+                        float fullness = Mathf.Min(1.0f, totalMass / expectedMass);
                         float Ab = Mathf.Min(recipe.percentArray[0] / 100.0f, fruitCount[0] / totalCount);
                         float As = Mathf.Min(recipe.percentArray[1] / 100.0f, fruitCount[1] / totalCount);
                         float Aa = Mathf.Min(recipe.percentArray[2] / 100.0f, fruitCount[2] / totalCount);
@@ -51,6 +79,7 @@ public class Squisher : MonoBehaviour
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
+                        audioSource.PlayOneShot(squishClips[Random.Range(0, squishClips.Length)]);
                     }
                 }
             }
@@ -66,9 +95,12 @@ public class Squisher : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, NormalHeight, transform.position.z);
             }
+
+            canPlayStartSound = true;
+            canPlayImpactSound = true;
         }
 
-        if(!isSquishing)
+        if (!isSquishing)
         {
             jar = null;
             fruitCount = new float[4];
@@ -94,6 +126,18 @@ public class Squisher : MonoBehaviour
                     fruitCount[collision.gameObject.GetComponent<Fruit>().id] += mass;
                 }
                 Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isSquishing)
+        {
+            if (jar == null && collision.gameObject.tag == "Jar")
+            {
+                jar = collision.gameObject;
+                Debug.Log("Jar!");
             }
         }
     }

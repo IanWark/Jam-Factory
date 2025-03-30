@@ -1,10 +1,14 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Recipe : MonoBehaviour
 {
+    [HideInInspector]
     public float[] percentArray;
+    public float MultipleUsedToDetermineRecipe = 25.0f;
+    private bool hasAlreadyPostedScore = false;
     public TextMeshProUGUI percent1;
     public TextMeshProUGUI percent2;
     public TextMeshProUGUI percent3;
@@ -28,23 +32,44 @@ public class Recipe : MonoBehaviour
 
     private void Generate()
     {
+        //This is all tremendously stupid, but it'll work
+
+        // Turn off scored recipe stuff
         image.enabled = false;
         actualPercent1.enabled = false;
         actualPercent2.enabled = false;
         actualPercent3.enabled = false;
         actualPercent4.enabled = false;
 
+        // Generate
         int numFruits = 4;
         percentArray = new float[numFruits];
+
+        int[] randomOrder = new int[numFruits];
+        for (int i = 0; i< numFruits-1; i++)
+        {
+            randomOrder[i] = 5;
+        }
+
+        for (int i = 0; i < numFruits - 1; i++)
+        {
+            int randomNumber = 5;
+            while(randomOrder.Contains(randomNumber))
+            {
+                randomNumber = Random.Range(0, numFruits);
+            }
+            randomOrder[i] = randomNumber;
+        }
 
         float totalPercent = 100.0f;
         for (int i = 0; i < numFruits - 1; i++)
         {
-            percentArray[i] = Random.Range(0.0f, totalPercent);
-            totalPercent -= percentArray[i];
+            percentArray[randomOrder[i]] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineRecipe))*MultipleUsedToDetermineRecipe;
+            totalPercent -= percentArray[randomOrder[i]];
         }
-
-        percentArray[numFruits - 1] = totalPercent;
+        
+        percentArray[randomOrder[numFruits - 1]] = totalPercent;
+        
 
         percent1.text = Mathf.RoundToInt(percentArray[0]).ToString() + "%";
         percent2.text = Mathf.RoundToInt(percentArray[1]).ToString() + "%";
@@ -54,10 +79,17 @@ public class Recipe : MonoBehaviour
 
     public void setScore(float score, float fullness, float[] fruitCount)
     {
-        if (score <= 0.0)
+        if (hasAlreadyPostedScore)
             return;
 
+        hasAlreadyPostedScore = true;
+        MoneyUI.IncreaseScore(score);
+
         float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
+
+        if (totalCount <= 0f)
+            return;
+
         Vector3 blue = new Vector3(0.0f, 0.0f, 1.0f);
         Vector3 red = new Vector3(1.0f, 0.0f, 0.0f);
         Vector3 green = new Vector3(0.0f, 1.0f, 0.0f);

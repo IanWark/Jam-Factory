@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(AudioSource))]
 public class ConveyorBelt : MonoBehaviour
 {
     public event Action<float> rollEvent;
@@ -22,6 +23,33 @@ public class ConveyorBelt : MonoBehaviour
 
     private InputAction moveAction;
 
+    [SerializeField]
+    private AudioClip conveyorAudioClip;
+
+    private AudioSource audioSource;
+    private float audioPitch;
+    private readonly float audioPitchNegativeVelocityBias = 0.1f; // slightly down-pitched if going left
+    private readonly float audioPitchVelocityScale = 0.25f;
+    private readonly Tuple<float,float> audioPitchMinMax = new Tuple<float, float>(0.9f, 1.3f);
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = conveyorAudioClip;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    private void Update()
+    {
+        audioPitch = Mathf.Clamp(
+            Mathf.Abs(currentVelocity) * audioPitchVelocityScale - (currentVelocity < 0 ? audioPitchNegativeVelocityBias : 0),
+            audioPitchMinMax.Item1,
+            audioPitchMinMax.Item2);
+        audioSource.pitch = audioPitch;
+        audioSource.volume = Mathf.Clamp01(Mathf.Abs(currentVelocity));
+    }
+
     private void FixedUpdate()
     {
         if (moveAction != null && moveAction.IsPressed())
@@ -31,7 +59,7 @@ public class ConveyorBelt : MonoBehaviour
 
             currentVelocity = Mathf.Clamp(currentVelocity, -pushMaxVelocity, pushMaxVelocity);
 
-            rollEvent?.Invoke(inputAmount);
+            rollEvent?.Invoke(currentVelocity);
         }
         else if (currentVelocity > 0)
         {
