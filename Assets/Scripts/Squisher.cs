@@ -3,15 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Squisher : MonoBehaviour
 {
+    public event Action resetAction;
+
     public KeyCode DebugKeyCode;
     private float NormalHeight;
     public float CompressedHeight;
     public float DownSpeed;
     public float UpSpeed;
 
+    private bool isSquishing = false;
     public float jarWidth = 1.0f;
     public float expectedMass = 0.5f;
-    private bool isSquishing = false;
     private GameObject jar;
 
     private AudioSource audioSource;
@@ -24,10 +26,6 @@ public class Squisher : MonoBehaviour
     [SerializeField]
     private AudioClip[] squishClips;
 
-
-    private bool canPlayStartSound = true;
-    private bool canPlayImpactSound = true;
-
     bool hasScorredJar = false;
     private float totalMass;
     private float[] fruitCount = new float[4];
@@ -38,28 +36,26 @@ public class Squisher : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void ActivateSquish()
+    {
+        isSquishing = true;
+        audioSource.PlayOneShot(startClip);
+    }
+
     private void Update()
     {
-        isSquishing = false;
-        if(Input.GetKey(DebugKeyCode))
-        {
-            if (canPlayStartSound)
-            {
-                audioSource.PlayOneShot(startClip);
-                canPlayStartSound = false;
-            }
+        //if (Input.GetKey(DebugKeyCode))
 
+        if (isSquishing)
+        {
             if(transform.position.y > CompressedHeight)
             {
                 transform.position -= new Vector3(0f, DownSpeed * Time.deltaTime, 0f);
-                isSquishing = true;
-            } else
+            }
+            else
             {
-                if(canPlayImpactSound)
-                {
-                    audioSource.PlayOneShot(impactClip);
-                    canPlayImpactSound = false;
-                }
+                audioSource.PlayOneShot(impactClip);
+                isSquishing = false;
 
                 transform.position = new Vector3(transform.position.x, CompressedHeight, transform.position.z);
                 if(!hasScorredJar && jar != null)
@@ -96,12 +92,6 @@ public class Squisher : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, NormalHeight, transform.position.z);
             }
 
-            canPlayStartSound = true;
-            canPlayImpactSound = true;
-        }
-
-        if (!isSquishing)
-        {
             jar = null;
             fruitCount = new float[4];
             totalMass = 0f;
