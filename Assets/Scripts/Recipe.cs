@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Recipe : MonoBehaviour
 {
@@ -30,17 +31,35 @@ public class Recipe : MonoBehaviour
 
     private void Generate()
     {
+        //This is all tremendously stupid, but it'll work
         int numFruits = 4;
         percentArray = new float[numFruits];
+
+        int[] randomOrder = new int[numFruits];
+        for (int i = 0; i< numFruits-1; i++)
+        {
+            randomOrder[i] = 5;
+        }
+
+        for (int i = 0; i < numFruits - 1; i++)
+        {
+            int randomNumber = 5;
+            while(randomOrder.Contains(randomNumber))
+            {
+                randomNumber = Random.Range(0, numFruits);
+            }
+            randomOrder[i] = randomNumber;
+        }
 
         float totalPercent = 100.0f;
         for (int i = 0; i < numFruits - 1; i++)
         {
-            percentArray[i] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineRecipe))*MultipleUsedToDetermineRecipe;
-            totalPercent -= percentArray[i];
+            percentArray[randomOrder[i]] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineRecipe))*MultipleUsedToDetermineRecipe;
+            totalPercent -= percentArray[randomOrder[i]];
         }
-
-        percentArray[numFruits - 1] = totalPercent;
+        
+        percentArray[randomOrder[numFruits - 1]] = totalPercent;
+        
 
         percent1.text = Mathf.RoundToInt(percentArray[0]).ToString() + "%";
         percent2.text = Mathf.RoundToInt(percentArray[1]).ToString() + "%";
