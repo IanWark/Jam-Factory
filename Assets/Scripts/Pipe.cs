@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,9 @@ public class Pipe : MonoBehaviour
     public float HorizontalForceMax;
     public float VerticalForceMin;
     public float VerticalForceMax;
+
+    [SerializeField]
+    private Collider2D collider;
 
     [SerializeField]
     private AudioClip fruitSpawnSound;
@@ -43,26 +47,43 @@ public class Pipe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activateAction != null && activateAction.IsPressed())
+        TimeSinceLastSpawn += Time.deltaTime;
+
+        if (activateAction != null && activateAction.IsPressed()
+            && TimeSinceLastSpawn > WhenToUpdate
+            && !IsBlocked())
         {
-            TimeSinceLastSpawn += Time.deltaTime;
-            if(TimeSinceLastSpawn > WhenToUpdate)
+            float positionModifier = Random.Range(spawnPosMin, spawnPosMax);
+            Vector3 modifiedSpawnPosition = new Vector3(SpawnPoint.position.x + positionModifier, SpawnPoint.position.y, SpawnPoint.position.z);
+
+            GameObject Fruit = Instantiate(FruitToSpawn, modifiedSpawnPosition, SpawnPoint.rotation);
+            audioSource.pitch = Random.Range(0.9f,1.6f);
+            audioSource.PlayOneShot(fruitSpawnSound);
+
+            float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
+            Fruit.transform.localScale = new Vector3(Scale, Scale, Scale);
+            Fruit.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+            Rigidbody2D rb2d = Fruit.GetComponent<Rigidbody2D>();
+            rb2d.AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
+
+            TimeSinceLastSpawn = 0.0f;
+        }
+    }
+
+    private bool IsBlocked()
+    {
+        List<RaycastHit2D> results = new();
+        collider.Cast(new Vector2(0,0), results);
+
+        foreach (RaycastHit2D result in results)
+        {
+            Fruit fruit = result.collider.GetComponent<Fruit>();
+            if (fruit != null && fruit.IsOld())
             {
-                float positionModifier = Random.Range(spawnPosMin, spawnPosMax);
-                Vector3 modifiedSpawnPosition = new Vector3(SpawnPoint.position.x + positionModifier, SpawnPoint.position.y, SpawnPoint.position.z);
-
-                GameObject Fruit = Instantiate(FruitToSpawn, modifiedSpawnPosition, SpawnPoint.rotation);
-                audioSource.pitch = Random.Range(0.9f,1.6f);
-                audioSource.PlayOneShot(fruitSpawnSound);
-
-                float Scale = Random.Range(SpawnScaleMin, SpawnScaleMax);
-                Fruit.transform.localScale = new Vector3(Scale, Scale, Scale);
-                Fruit.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
-                Rigidbody2D rb2d = Fruit.GetComponent<Rigidbody2D>();
-                rb2d.AddForce(new Vector2(Random.Range(HorizontalForceMin, HorizontalForceMax), Random.Range(VerticalForceMin, VerticalForceMax)));
-
-                TimeSinceLastSpawn = 0.0f;
+                return true;
             }
         }
+
+        return false;
     }
 }
