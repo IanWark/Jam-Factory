@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82b1dcf36dee264c8dfdb5fd0ce0af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numJarsToSpawn: 12
-  spaceBetweenJars: 2
+  numJarsToSpawn: 8
+  spaceBetweenJars: 5
   startLocation: {fileID: 2167741355630051271}
   jarPrefab: {fileID: 680252073710216124, guid: 313309532e70ce449a7b35d68e1776aa, type: 3}

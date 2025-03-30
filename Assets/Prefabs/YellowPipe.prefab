@@ -105,15 +105,14 @@ MonoBehaviour:
   FruitToSpawn: {fileID: 5099717256522464613, guid: cadd3dbc2aec1d64b9297c1c7fdc84cb, type: 3}
   SpawnPoint: {fileID: 2222671347383106332}
   SpawnsPerSecond: 4
-  SpawnScaleMin: 0.8
-  SpawnScaleMax: 1.2
+  SpawnScaleMin: 1.3
+  SpawnScaleMax: 1.8
   spawnPosMin: -0.3
   spawnPosMax: 0.3
   HorizontalForceMin: -1
   HorizontalForceMax: 1
   VerticalForceMin: -1
   VerticalForceMax: 0
-  debugActivateKey: 101
   fruitSpawnSound: {fileID: 0}
 --- !u!82 &7213150727272873765
 AudioSource:
