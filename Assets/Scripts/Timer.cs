@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -15,10 +16,13 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI text;
 
+    public event Action OnGameOverEvent;
+
     private float currentTime;
+    private bool gameEnded = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         currentTime = startTimeInSeconds;
 
@@ -26,16 +30,33 @@ public class Timer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (gameEnded)
+        {
+            return;
+        }
+
         currentTime -= Time.deltaTime;
 
         if (currentTime < colouredTextTimeInSeconds)
         {
             text.color = colouredTextColour;
         }
+        if (currentTime <= 0)
+        {
+            EndGame();
+        }
 
         text.text = FormatTime(currentTime);
+    }
+
+    private void EndGame()
+    {
+        gameEnded = true;
+        text.text = FormatTime(0);
+
+        OnGameOverEvent.Invoke();
     }
 
     private static string FormatTime(float time)

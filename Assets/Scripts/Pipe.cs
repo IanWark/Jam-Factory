@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class Pipe : MonoBehaviour
@@ -16,7 +17,6 @@ public class Pipe : MonoBehaviour
     public float HorizontalForceMax;
     public float VerticalForceMin;
     public float VerticalForceMax;
-    public KeyCode debugActivateKey;
 
     [SerializeField]
     private AudioClip fruitSpawnSound;
@@ -24,6 +24,16 @@ public class Pipe : MonoBehaviour
 
     private float TimeSinceLastSpawn = 0.0f;
     private float WhenToUpdate = 0.0f;
+
+    private InputAction activateAction;
+
+    public void OnActivate(InputAction.CallbackContext input)
+    {
+        TimeSinceLastSpawn = WhenToUpdate;
+
+        activateAction = input.action;
+    }
+
     void Start()
     {
         WhenToUpdate = 1.0f / SpawnsPerSecond;
@@ -33,11 +43,7 @@ public class Pipe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(debugActivateKey))
-        {
-            TimeSinceLastSpawn = WhenToUpdate;
-        }
-        if(Input.GetKey(debugActivateKey))
+        if (activateAction != null && activateAction.IsPressed())
         {
             TimeSinceLastSpawn += Time.deltaTime;
             if(TimeSinceLastSpawn > WhenToUpdate)

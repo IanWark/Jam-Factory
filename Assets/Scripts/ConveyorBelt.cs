@@ -17,20 +17,25 @@ public class ConveyorBelt : MonoBehaviour
     [SerializeField]
     private float stoppingAccelerationModifier;
 
+    [SerializeField]
+    private AudioClip conveyorAudioClip;
+
     private float currentVelocity = 0f;
 
     private HashSet<Rigidbody2D> touchingRigidBodies = new HashSet<Rigidbody2D>();
 
     private InputAction moveAction;
 
-    [SerializeField]
-    private AudioClip conveyorAudioClip;
-
     private AudioSource audioSource;
     private float audioPitch;
     private readonly float audioPitchNegativeVelocityBias = 0.1f; // slightly down-pitched if going left
     private readonly float audioPitchVelocityScale = 0.25f;
     private readonly Tuple<float,float> audioPitchMinMax = new Tuple<float, float>(0.9f, 1.3f);
+
+    public void OnMove(InputAction.CallbackContext input)
+    {
+        moveAction = input.action;
+    }
 
     private void Start()
     {
@@ -80,11 +85,6 @@ public class ConveyorBelt : MonoBehaviour
         }
     }
 
-    public void OnMove(InputAction.CallbackContext input)
-    {
-        moveAction = input.action;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D collidingRigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -93,6 +93,7 @@ public class ConveyorBelt : MonoBehaviour
             touchingRigidBodies.Add(collidingRigidBody);
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Rigidbody2D collidingRigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
