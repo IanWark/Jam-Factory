@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: -8221647040698505144, guid: 43ee385718fb043469fd3fc912adac79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -108,10 +108,9 @@ MonoBehaviour:
   UpSpeed: 2
   jarWidth: 2
   expectedMass: 2.5
-  particleSystem: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}
+  squishParticleSystem: {fileID: 0}
   startClip: {fileID: 0}
   impactClip: {fileID: 0}
-  squishClips: []
 --- !u!61 &7403939579051438135
 BoxCollider2D:
   m_ObjectHideFlags: 0

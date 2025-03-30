@@ -87,6 +87,13 @@ public class Squisher : MonoBehaviour
 
                         recipe.setScore(score, fullness, fruitCount);
                     }
+                    else
+                    {
+                        float score = 0.0f;
+                        float fullness = 0.0f;
+                        recipe.setScore(score, fullness, fruitCount);
+                        Debug.Log(totalMass);
+                    }
                 }
             }
         }

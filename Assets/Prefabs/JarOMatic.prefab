@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1010
   m_Sprite: {fileID: 21300000, guid: 37988ea6da2249044acfd63e8757b8d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerLocation: {fileID: 213794291871129119}
-  maxTriggerDistance: 0.03
+  maxTriggerDistance: 0.1
   squisher: {fileID: 0}
 --- !u!1 &6104426935936268187
 GameObject:
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 1005
   m_Sprite: {fileID: 21300000, guid: 2ba3926f2354ee24e8e66578954fcb96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
