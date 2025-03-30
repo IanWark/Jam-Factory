@@ -108,6 +108,7 @@ MonoBehaviour:
   UpSpeed: 2
   jarWidth: 2
   expectedMass: 2.5
+  particleSystem: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}
   startClip: {fileID: 0}
   impactClip: {fileID: 0}
   squishClips: []

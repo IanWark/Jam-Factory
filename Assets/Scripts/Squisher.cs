@@ -13,6 +13,7 @@ public class Squisher : MonoBehaviour
     public float expectedMass = 0.5f;
     private bool isSquishing = false;
     private GameObject jar;
+    public GameObject particleSystem;
 
     private AudioSource audioSource;
 
@@ -126,13 +127,25 @@ public class Squisher : MonoBehaviour
             }
             if (collision.gameObject.tag == "Fruit")
             {
-                if(jar != null &&
+                if (jar != null &&
                     Mathf.Abs(jar.transform.position.x - collision.gameObject.transform.position.x) < (jarWidth / 2.0f))
                 {
                     float mass = collision.gameObject.GetComponent<Rigidbody2D>().mass;
-                    totalMass += collision.gameObject.GetComponent<Rigidbody2D>().mass;
+                    totalMass += mass;
                     fruitCount[collision.gameObject.GetComponent<Fruit>().id] += mass;
                 }
+                else
+                {
+                    Vector3[] colours = new Vector3[4];
+                    colours[0] = new Vector3(0.0f, 0.0f, 1.0f);
+                    colours[1] = new Vector3(0.0f, 1.0f, 0.0f);
+                    colours[2] = new Vector3(1.0f, 1.0f, 0.0f);
+                    colours[3] = new Vector3(1.0f, 0.0f, 0.0f);
+                    ParticleSystem.MainModule main = Instantiate(particleSystem, collision.gameObject.transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
+                    int id = collision.gameObject.GetComponent<Fruit>().id;
+                    main.startColor = new Color(colours[id].x, colours[id].y, colours[id].z);
+                }
+
                 Destroy(collision.gameObject);
             }
         }
