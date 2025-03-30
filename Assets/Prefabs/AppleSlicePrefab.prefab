@@ -225,4 +225,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   timeUntilOld: 1
+  particleColour: {r: 0.9372549, g: 0.9647059, b: 0.83137256, a: 1}
   particleSystemPrefab: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}
