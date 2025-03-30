@@ -23,6 +23,8 @@ public class Fruit : MonoBehaviour
 
     public void DestroyIt()
     {
+        SquishSounds.instance.PlaySquish();
+
         Vector3[] colours = new Vector3[4];
         colours[0] = new Vector3(0.0f, 0.0f, 1.0f);
         colours[1] = new Vector3(0.0f, 1.0f, 0.0f);

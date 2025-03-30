@@ -21,10 +21,6 @@ public class Squisher : MonoBehaviour
     [SerializeField]
     private AudioClip impactClip;
 
-    [SerializeField]
-    private AudioClip[] squishClips;
-
-
     private bool canPlayStartSound = true;
     private bool canPlayImpactSound = true;
 
@@ -86,7 +82,6 @@ public class Squisher : MonoBehaviour
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
-                        audioSource.PlayOneShot(squishClips[Random.Range(0, squishClips.Length)]);
                         Debug.Log(totalMass);
                     }
                 }
