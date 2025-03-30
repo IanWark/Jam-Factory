@@ -960,6 +960,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 9690d09054593d84a9d5cd875fc79531, type: 3}
     - target: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
+      propertyPath: expectedMass
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110691829151162832, guid: 17a7a0a53be1b994c9862bc9b0c50f1e, type: 3}
       propertyPath: CompressedHeight
       value: 4.1
       objectReference: {fileID: 0}
