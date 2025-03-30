@@ -28,6 +28,12 @@ public class Recipe : MonoBehaviour
 
     private void Generate()
     {
+        image.enabled = false;
+        actualPercent1.enabled = false;
+        actualPercent2.enabled = false;
+        actualPercent3.enabled = false;
+        actualPercent4.enabled = false;
+
         int numFruits = 4;
         percentArray = new float[numFruits];
 
@@ -58,6 +64,8 @@ public class Recipe : MonoBehaviour
         Vector3 yellow = new Vector3(1.0f, 1.0f, 0.0f);
 
         Vector3 finalColour = ((blue * fruitCount[0]) + (green * fruitCount[1]) + (yellow * fruitCount[2]) + (red * fruitCount[3]))/totalCount;
+
+        image.enabled = true;
         image.color = new Color(finalColour.x, finalColour.y, finalColour.z, 0.75f);
         image.transform.localScale = new Vector3(1.0f, fullness, 1.0f);
         image.transform.position -= new Vector3(0.0f,(1.0f-fullness)*0.5f, 0.0f);
