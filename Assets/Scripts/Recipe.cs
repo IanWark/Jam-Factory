@@ -8,6 +8,7 @@ public class Recipe : MonoBehaviour
     [HideInInspector]
     public float[] percentArray;
     public float MultipleUsedToDetermineRecipe = 25.0f;
+    private bool hasAlreadyPostedScore = false;
     public TextMeshProUGUI percent1;
     public TextMeshProUGUI percent2;
     public TextMeshProUGUI percent3;
@@ -69,9 +70,10 @@ public class Recipe : MonoBehaviour
 
     public void setScore(float score, float fullness, float[] fruitCount)
     {
-        if (score <= 0.0)
+        if (score <= 0.0 || hasAlreadyPostedScore)
             return;
 
+        hasAlreadyPostedScore = true;
         MoneyUI.IncreaseScore(score);
 
         float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
