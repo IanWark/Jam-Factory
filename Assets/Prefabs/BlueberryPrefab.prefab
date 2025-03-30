@@ -167,10 +167,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 257
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -203,6 +203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  timeUntilOld: 1
+  timeUntilOld: 2
   particleColour: {fileID: 11400000, guid: 5de9bcd368b219443b2a9a24b194ac13, type: 2}
   particleSystemPrefab: {fileID: 1595671049929618792, guid: d3ea6dfbbcecf1e4e9532802cc09f38d, type: 3}

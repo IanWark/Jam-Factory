@@ -114,7 +114,7 @@ MonoBehaviour:
   HorizontalForceMax: 0.5
   VerticalForceMin: -0.5
   VerticalForceMax: 0
-  collider: {fileID: 5080755515431231669}
+  pipeCollider: {fileID: 5080755515431231669}
   fruitSpawnSound: {fileID: 0}
 --- !u!82 &3206616624162499617
 AudioSource:

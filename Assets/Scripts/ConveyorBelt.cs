@@ -79,7 +79,7 @@ public class ConveyorBelt : MonoBehaviour
             currentVelocity = Mathf.Min(currentVelocity, 0);
         }
 
-        touchingRigidBodies.Remove(null);
+        touchingRigidBodies.RemoveWhere(IsNull);
 
         foreach (Rigidbody2D rigidbody in touchingRigidBodies)
         {
@@ -91,6 +91,11 @@ public class ConveyorBelt : MonoBehaviour
 
             rigidbody.linearVelocityX = currentVelocity;
         }
+    }
+
+    private static bool IsNull(Rigidbody2D rigidbody)
+    {
+        return rigidbody == null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

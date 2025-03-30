@@ -20,7 +20,7 @@ public class Pipe : MonoBehaviour
     public float VerticalForceMax;
 
     [SerializeField]
-    private Collider2D collider;
+    private Collider2D pipeCollider;
 
     [SerializeField]
     private AudioClip fruitSpawnSound;
@@ -73,7 +73,7 @@ public class Pipe : MonoBehaviour
     private bool IsBlocked()
     {
         List<RaycastHit2D> results = new();
-        collider.Cast(new Vector2(0,0), results);
+        pipeCollider.Cast(new Vector2(0,0), results);
 
         foreach (RaycastHit2D result in results)
         {

@@ -70,7 +70,7 @@ public class JarOMatic : MonoBehaviour
         // Activate the squisher
         if (squisher)
         {
-            squisher.ActivateSquish();
+            squisher.ActivateSquish(jar);
         }
     }
 
