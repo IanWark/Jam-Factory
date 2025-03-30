@@ -98,4 +98,16 @@ public class Squisher : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isSquishing)
+        {
+            if (jar == null && collision.gameObject.tag == "Jar")
+            {
+                jar = collision.gameObject;
+                Debug.Log("Jar!");
+            }
+        }
+    }
 }
