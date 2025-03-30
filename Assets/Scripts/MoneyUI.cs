@@ -30,7 +30,7 @@ public class MoneyUI : MonoBehaviour
 
     private string GetFormattedScore()
     {
-        return "$" + score;
+        return string.Format("${0:0.00}", score);
     }
 
     public static void IncreaseScore(float jamJarValue)
