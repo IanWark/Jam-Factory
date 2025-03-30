@@ -1814,6 +1814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percentArray: []
   MultipleUsedToDetermineRecipe: 25
+  hasAlreadyPostedScore: 0
   percent1: {fileID: 1223889884860486846}
   percent2: {fileID: 5091024158292238579}
   percent3: {fileID: 9176707502573684826}
@@ -1823,6 +1824,11 @@ MonoBehaviour:
   actualPercent3: {fileID: 6524922184991143651}
   actualPercent4: {fileID: 5513827727521139291}
   image: {fileID: 6055762248880390289}
+  jamAlpha: 0.85
+  blueberryColour: {fileID: 11400000, guid: 5de9bcd368b219443b2a9a24b194ac13, type: 2}
+  appleColour: {fileID: 11400000, guid: bbace25476e5131458f279fb2e8c793d, type: 2}
+  apricotColour: {fileID: 11400000, guid: e5368bde66f41ac4598f56d4d2710236, type: 2}
+  raspberryColour: {fileID: 11400000, guid: d30c488e2d8ba5742b04c27ce7a74a86, type: 2}
 --- !u!1 &9149070776111366052
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class Fruit : MonoBehaviour
     private float timeUntilOld = 1;
 
     [SerializeField]
-    private Color particleColour;
+    private FruitColourObject particleColour;
 
     private float creationTime;
 
@@ -29,7 +29,7 @@ public class Fruit : MonoBehaviour
         SquishSounds.instance.PlaySquish();
 
         ParticleSystem.MainModule main = Instantiate(particleSystemPrefab, transform.position, transform.rotation).GetComponent<ParticleSystem>().main;
-        main.startColor = particleColour;
+        main.startColor = particleColour.colour;
 
         Destroy(gameObject);
     }
