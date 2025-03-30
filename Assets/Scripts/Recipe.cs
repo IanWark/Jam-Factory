@@ -35,6 +35,8 @@ public class Recipe : MonoBehaviour
         //This is all tremendously stupid, but it'll work
 
         // Turn off scored recipe stuff
+        hasAlreadyPostedScore = false;
+
         image.enabled = false;
         actualPercent1.enabled = false;
         actualPercent2.enabled = false;
