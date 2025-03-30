@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 9129321640538960990}
   - component: {fileID: 6055762248880390289}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Jam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4055758138555133565, guid: 64d8e367fd9a07946b02429591cc9e4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -690,7 +690,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6816017590884088554}
-  - {fileID: 2585693061868998860}
   m_Father: {fileID: 2900587080956227910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -809,7 +808,7 @@ GameObject:
   - component: {fileID: 5257790664395972502}
   - component: {fileID: 2607263414087060155}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,11 +826,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6364618971146757032}
+  m_Father: {fileID: 2900587080956227910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.3133}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5257790664395972502
@@ -1535,6 +1534,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2585693061868998860}
+  - {fileID: 1436353132556082061}
   - {fileID: 5019514996410337757}
   - {fileID: 3549435763666070114}
   - {fileID: 5414998155223242652}
@@ -1543,7 +1544,6 @@ RectTransform:
   - {fileID: 6062433631616129685}
   - {fileID: 6209698453968475511}
   - {fileID: 74811438828256389}
-  - {fileID: 1436353132556082061}
   m_Father: {fileID: 2942999095966162490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1813,6 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentArray: []
+  MultipleUsedToDetermineRecipe: 25
   percent1: {fileID: 1223889884860486846}
   percent2: {fileID: 5091024158292238579}
   percent3: {fileID: 9176707502573684826}
