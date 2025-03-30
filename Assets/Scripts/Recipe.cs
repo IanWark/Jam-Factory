@@ -70,13 +70,17 @@ public class Recipe : MonoBehaviour
 
     public void setScore(float score, float fullness, float[] fruitCount)
     {
-        if (score <= 0.0 || hasAlreadyPostedScore)
+        if (hasAlreadyPostedScore)
             return;
 
         hasAlreadyPostedScore = true;
         MoneyUI.IncreaseScore(score);
 
         float totalCount = fruitCount[0] + fruitCount[1] + fruitCount[2] + fruitCount[3];
+
+        if (totalCount <= 0f)
+            return;
+
         Vector3 blue = new Vector3(0.0f, 0.0f, 1.0f);
         Vector3 red = new Vector3(1.0f, 0.0f, 0.0f);
         Vector3 green = new Vector3(0.0f, 1.0f, 0.0f);
