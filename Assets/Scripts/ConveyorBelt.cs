@@ -83,6 +83,12 @@ public class ConveyorBelt : MonoBehaviour
 
         foreach (Rigidbody2D rigidbody in touchingRigidBodies)
         {
+            Recipe recipe = rigidbody.GetComponent<Recipe>();
+            if (recipe && recipe.hasAlreadyPostedScore)
+            {
+                continue;
+            }
+
             rigidbody.linearVelocityX = currentVelocity;
         }
     }

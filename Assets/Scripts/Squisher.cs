@@ -1,18 +1,25 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class Squisher : MonoBehaviour
 {
+    public event Action resetAction;
+
+    private bool needsReset = false;
+
     private float NormalHeight;
     public float CompressedHeight;
     public float DownSpeed;
     public float UpSpeed;
 
+    private bool isSquishing = false;
     public float jarWidth = 1.0f;
     public float expectedMass = 0.5f;
-    private bool isSquishing = false;
     private GameObject jar;
+
+    public GameObject squishParticleSystem;
 
     private AudioSource audioSource;
 
@@ -41,28 +48,25 @@ public class Squisher : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void ActivateSquish()
+    {
+        isSquishing = true;
+        audioSource.PlayOneShot(startClip);
+    }
+
     private void Update()
     {
-        isSquishing = false;
-        if (activateAction != null && activateAction.IsPressed())
+        if (isSquishing)
         {
-            if (canPlayStartSound)
-            {
-                audioSource.PlayOneShot(startClip);
-                canPlayStartSound = false;
-            }
-
             if(transform.position.y > CompressedHeight)
             {
                 transform.position -= new Vector3(0f, DownSpeed * Time.deltaTime, 0f);
-                isSquishing = true;
-            } else
+            }
+            else
             {
-                if(canPlayImpactSound)
-                {
-                    audioSource.PlayOneShot(impactClip);
-                    canPlayImpactSound = false;
-                }
+                audioSource.PlayOneShot(impactClip);
+                isSquishing = false;
+                needsReset = true;
 
                 transform.position = new Vector3(transform.position.x, CompressedHeight, transform.position.z);
                 if(!hasScorredJar && jar != null)
@@ -82,7 +86,6 @@ public class Squisher : MonoBehaviour
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitCount);
-                        Debug.Log(totalMass);
                     }
                 }
             }
@@ -94,20 +97,18 @@ public class Squisher : MonoBehaviour
             {
                 transform.position += new Vector3(0f, UpSpeed * Time.deltaTime, 0f);
             }
-            else
+            else if (needsReset)
             {
                 transform.position = new Vector3(transform.position.x, NormalHeight, transform.position.z);
+
+                resetAction.Invoke();
+                jar = null;
+                fruitCount = new float[4];
+                totalMass = 0f;
+
+                needsReset = false;
             }
 
-            canPlayStartSound = true;
-            canPlayImpactSound = true;
-        }
-
-        if (!isSquishing)
-        {
-            jar = null;
-            fruitCount = new float[4];
-            totalMass = 0f;
         }
     }
 
