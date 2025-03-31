@@ -20,6 +20,9 @@ public class ConveyorBelt : MonoBehaviour
     [SerializeField]
     private AudioClip conveyorAudioClip;
 
+    [SerializeField]
+    private bool alwaysOn = false;
+
     private float currentVelocity = 0f;
 
     private HashSet<Rigidbody2D> touchingRigidBodies = new HashSet<Rigidbody2D>();
@@ -57,9 +60,12 @@ public class ConveyorBelt : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moveAction != null && moveAction.IsPressed())
+
+        if (alwaysOn 
+            || moveAction != null && moveAction.IsPressed())
         {
-            float inputAmount = moveAction.ReadValue<Vector2>().x;
+            float inputAmount = alwaysOn ? 1.0f : moveAction.ReadValue<Vector2>().x;
+
             currentVelocity = currentVelocity + inputAmount * Time.deltaTime * pushAcceleration;
 
             currentVelocity = Mathf.Clamp(currentVelocity, -pushMaxVelocity, pushMaxVelocity);

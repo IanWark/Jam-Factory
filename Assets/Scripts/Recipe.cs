@@ -21,18 +21,18 @@ public class Recipe : MonoBehaviour
     public Image image;
 
     [SerializeField]
-    private float jamAlpha;
+    protected float jamAlpha;
 
     [SerializeField]
-    private FruitColourObject blueberryColour;
+    protected FruitColourObject blueberryColour;
     [SerializeField]
-    private FruitColourObject appleColour;
+    protected FruitColourObject appleColour;
     [SerializeField]
-    private FruitColourObject apricotColour;
+    protected FruitColourObject apricotColour;
     [SerializeField]
-    private FruitColourObject raspberryColour;
+    protected FruitColourObject raspberryColour;
 
-    public void Respawn()
+    public virtual void Respawn()
     {
         Generate();
     }
