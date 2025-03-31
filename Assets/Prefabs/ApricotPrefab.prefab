@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.11341149
+  m_Mass: 0.11908206
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -127,7 +127,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5099717256522464613}
   m_Enabled: 1
   serializedVersion: 3
-  m_Density: 1
+  m_Density: 1.05
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
