@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7200489629470496657}
   - component: {fileID: 5797680544656793949}
   - component: {fileID: 5295821786393671554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Killing Field
   m_TagString: KillingField
   m_Icon: {fileID: 0}
