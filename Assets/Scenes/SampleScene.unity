@@ -3412,6 +3412,14 @@ PrefabInstance:
       propertyPath: conveyorAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: 06ffffc0efdaf464eb53bb2a53c79665, type: 3}
+    - target: {fileID: 475089796911119728, guid: 8ae9642b071141e45b581f82fb4e708b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.671632
+      objectReference: {fileID: 0}
+    - target: {fileID: 475089796911119728, guid: 8ae9642b071141e45b581f82fb4e708b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35.0405
+      objectReference: {fileID: 0}
     - target: {fileID: 2201531866265397276, guid: 8ae9642b071141e45b581f82fb4e708b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
