@@ -30,7 +30,23 @@ public class MoneyUI : MonoBehaviour
 
     private string GetFormattedScore()
     {
-        return string.Format("${0:0.00}", score);
+        if (score >= 500)
+        {
+            return string.Format("${0:0.00}!!!", score);
+        }
+        else if (score >= 200)
+        {
+            return string.Format("${0:0.00}!!", score);
+        }
+        else if (score >= 100)
+        {
+            return string.Format("${0:0.00}!", score);
+        }
+        else
+        {
+            return string.Format("${0:0.00}", score);
+        }
+
     }
 
     public static void IncreaseScore(float jamJarValue)
