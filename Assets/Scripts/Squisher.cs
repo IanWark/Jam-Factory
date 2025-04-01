@@ -85,6 +85,7 @@ public class Squisher : MonoBehaviour
                         float score = 10.0f * fullness * accuracy;
 
                         recipe.setScore(score, fullness, fruitMass);
+                        SquishSounds.instance.PlayBigSquish();
                     }
                     else
                     {

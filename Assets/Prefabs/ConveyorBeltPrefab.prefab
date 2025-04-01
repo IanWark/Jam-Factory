@@ -287,6 +287,8 @@ MonoBehaviour:
   pushAcceleration: 10
   stoppingAccelerationModifier: 2
   conveyorAudioClip: {fileID: 0}
+  alwaysOn: 0
+  audioMaxVolume: 0.8
 --- !u!82 &7430190782351858991
 AudioSource:
   m_ObjectHideFlags: 0

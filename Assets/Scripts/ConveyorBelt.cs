@@ -31,6 +31,10 @@ public class ConveyorBelt : MonoBehaviour
 
     private AudioSource audioSource;
     private float audioPitch;
+
+    [Range(0.0f, 1.0f)]
+    [SerializeField]
+    private float audioMaxVolume = 0.8f;
     private readonly float audioPitchNegativeVelocityBias = 0.1f; // slightly down-pitched if going left
     private readonly float audioPitchVelocityScale = 0.25f;
     private readonly Tuple<float,float> audioPitchMinMax = new Tuple<float, float>(0.9f, 1.3f);
@@ -55,13 +59,13 @@ public class ConveyorBelt : MonoBehaviour
             audioPitchMinMax.Item1,
             audioPitchMinMax.Item2);
         audioSource.pitch = audioPitch;
-        audioSource.volume = Mathf.Clamp01(Mathf.Abs(currentVelocity));
+        audioSource.volume = Mathf.Clamp01(Mathf.Abs(currentVelocity)) * audioMaxVolume;
     }
 
     private void FixedUpdate()
     {
 
-        if (alwaysOn 
+        if (alwaysOn
             || moveAction != null && moveAction.IsPressed())
         {
             float inputAmount = alwaysOn ? 1.0f : moveAction.ReadValue<Vector2>().x;
