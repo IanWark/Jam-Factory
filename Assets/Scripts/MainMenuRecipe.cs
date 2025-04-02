@@ -26,36 +26,8 @@ public class MainMenuRecipe : Recipe
         //This is all tremendously stupid, but it'll work
         image.enabled = false;
 
-        int numFruits = 4;
-
-        float totalPercent = 100.0f;
-
         // Generate expected percents
-        float[] expectedPercentArray = new float[numFruits];
-
-        int[] expectedRandomOrder = new int[numFruits];
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            expectedRandomOrder[i] = 5;
-        }
-
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            int randomNumber = 5;
-            while (expectedRandomOrder.Contains(randomNumber))
-            {
-                randomNumber = Random.Range(0, numFruits);
-            }
-            expectedRandomOrder[i] = randomNumber;
-        }
-
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            expectedPercentArray[expectedRandomOrder[i]] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineRecipe)) * MultipleUsedToDetermineRecipe;
-            totalPercent -= expectedPercentArray[expectedRandomOrder[i]];
-        }
-
-        expectedPercentArray[expectedRandomOrder[numFruits - 1]] = totalPercent;
+        float[] expectedPercentArray = GeneratePercents(MultipleUsedToDetermineRecipe);
 
         percent1.text = Mathf.RoundToInt(expectedPercentArray[0]).ToString() + "%";
         percent2.text = Mathf.RoundToInt(expectedPercentArray[1]).ToString() + "%";
@@ -63,33 +35,7 @@ public class MainMenuRecipe : Recipe
         percent4.text = Mathf.RoundToInt(expectedPercentArray[3]).ToString() + "%";
 
         // Generate actual percent and set actual percents and colour
-        totalPercent = 100.0f;
-
-        float[] actualPercentArray = new float[numFruits];
-
-        int[] actualRandomOrder = new int[numFruits];
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            actualRandomOrder[i] = 5;
-        }
-
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            int randomNumber = 5;
-            while (actualRandomOrder.Contains(randomNumber))
-            {
-                randomNumber = Random.Range(0, numFruits);
-            }
-            actualRandomOrder[i] = randomNumber;
-        }
-
-        for (int i = 0; i < numFruits - 1; i++)
-        {
-            actualPercentArray[expectedRandomOrder[i]] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / MultipleUsedToDetermineActual)) * MultipleUsedToDetermineActual;
-            totalPercent -= actualPercentArray[actualRandomOrder[i]];
-        }
-
-        actualPercentArray[actualRandomOrder[numFruits - 1]] = totalPercent;
+        float[] actualPercentArray = GeneratePercents(MultipleUsedToDetermineActual);
 
         float totalCount = actualPercentArray[0] + actualPercentArray[1] + actualPercentArray[2] + actualPercentArray[3];
 
@@ -103,9 +49,6 @@ public class MainMenuRecipe : Recipe
         image.enabled = true;
         image.color = new Color(finalColour.r, finalColour.g, finalColour.b, jamAlpha);
 
-        float fullness = Random.Range(fullnessMin, fullnessMax);
-        image.transform.localScale = new Vector3(1.0f, fullness, 1.0f);
-
         actualPercent1.text = Mathf.RoundToInt(actualPercentArray[0]).ToString() + "%";
         actualPercent2.text = Mathf.RoundToInt(actualPercentArray[1]).ToString() + "%";
         actualPercent3.text = Mathf.RoundToInt(actualPercentArray[2]).ToString() + "%";
@@ -115,5 +58,44 @@ public class MainMenuRecipe : Recipe
         actualPercent2.enabled = true;
         actualPercent3.enabled = true;
         actualPercent4.enabled = true;
+
+        // Generate fullness
+        float fullness = Random.Range(fullnessMin, fullnessMax);
+        image.transform.localScale = new Vector3(1.0f, fullness, 1.0f);
+    }
+
+    private float[] GeneratePercents(float multipleUsed)
+    {
+        int numFruits = 4;
+        float totalPercent = 100.0f;
+
+        // Generate expected percents
+        float[] percentArray = new float[numFruits];
+
+        int[] randomOrder = new int[numFruits];
+        for (int i = 0; i < numFruits - 1; i++)
+        {
+            randomOrder[i] = 5;
+        }
+
+        for (int i = 0; i < numFruits - 1; i++)
+        {
+            int randomNumber = 5;
+            while (randomOrder.Contains(randomNumber))
+            {
+                randomNumber = Random.Range(0, numFruits);
+            }
+            randomOrder[i] = randomNumber;
+        }
+
+        for (int i = 0; i < numFruits - 1; i++)
+        {
+            percentArray[randomOrder[i]] = Mathf.RoundToInt(Random.Range(0.0f, totalPercent / multipleUsed)) * multipleUsed;
+            totalPercent -= percentArray[randomOrder[i]];
+        }
+
+        percentArray[randomOrder[numFruits - 1]] = totalPercent;
+
+        return percentArray;
     }
 }
