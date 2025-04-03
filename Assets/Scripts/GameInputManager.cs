@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class GameInputManager : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput playerInput;
-
     [SerializeField]
     private Timer timer;
 
@@ -27,23 +24,13 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Squisher squisher;
 
-    private void Start()
-    {
-        timer.OnGameOverEvent += OnGameOver;
-    }
-
-    private void OnGameOver()
-    {
-        playerInput.enabled = false;
-    }
-
     public void OnMove(InputAction.CallbackContext input)
     {
         conveyorBelt.OnMove(input);
     }
 
     public void OnBlueActivate(InputAction.CallbackContext input)
-    {
+    { 
         bluePipe.OnActivate(input);
     }
 
