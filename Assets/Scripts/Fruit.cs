@@ -43,7 +43,6 @@ public class Fruit : MonoBehaviour
         main.startColor = particleColour.colour;
 
         float massRatio = rigidbody.mass / MAX_FRUIT_PARTICLE_MASS;
-        Debug.Log($"name: {name} scale: {transform.localScale} mass: {rigidbody.mass} / maxMass {MAX_FRUIT_PARTICLE_MASS} = massRatio {massRatio}");
         ParticleSystem.EmissionModule emission = particleSystem.emission;
         emission.rateOverTime = massRatio * FRUIT_PARTICLE_RATIO_MULTIPLIER;
 
